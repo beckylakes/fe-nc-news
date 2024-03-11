@@ -12,11 +12,11 @@ const App = () => {
     <UserContext.Provider value={{ userName, setUserName }}>
       <Header />
       <Routes>
-        {/* {!userName ? (
+        {!userName ? (
           <Route path="/" element={<Login />} />
-        ) : ( */}
+        ) : (
           <Route path="/articles" element={<Articles />} />
-        // 
+        )};
       </Routes>
     </UserContext.Provider>
   );
