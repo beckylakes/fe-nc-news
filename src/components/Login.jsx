@@ -12,11 +12,11 @@ const Login = () => {
   }, []);
   
   return (
-    <main className="userspage">
+    <main className="users-page">
       <h2>Choose a User:</h2>
-      <section className="user-card">
-        {users.map((user, index) => {
-          return <UserCard user={user} key={index} />;
+      <section className="user-card-section">
+        {users.map((user) => {
+          return <UserCard user={user} key={user.username} />;
         })}
       </section>
     </main>
