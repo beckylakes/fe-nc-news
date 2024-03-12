@@ -9,7 +9,7 @@ const Login = () => {
     getUsers().then((users) => {
       setUsers(users);
     });
-  }, [setUsers]);
+  }, []);
   
   return (
     <main className="userspage">
