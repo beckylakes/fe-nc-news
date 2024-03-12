@@ -1,5 +1,5 @@
 import { Routes, Route } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { UserContext } from "./components/UserContext";
 import Header from "./components/Header";
 import Login from "./components/Login";
@@ -9,6 +9,13 @@ import SingleArticle from "./components/SingleArticle";
 
 const App = () => {
   const [userName, setUserName] = useState();
+
+  useEffect(() => {
+    const loggedInUser = sessionStorage.getItem("loggedInUser");
+    if (loggedInUser) {
+      setUserName(JSON.parse(loggedInUser).username);
+    }
+  }, []);
 
   return (
     <UserContext.Provider value={{ userName, setUserName }}>

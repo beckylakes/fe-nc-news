@@ -10,6 +10,7 @@ const UserCard = ({ user }) => {
   const handleUserSelect = () => {
     setUserName(user.username);
     navigate("/articles");
+    sessionStorage.setItem("loggedInUser", JSON.stringify(user));
   };
 
   return (
