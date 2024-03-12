@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { getArticleByID } from "../utils/api";
+import Comments from "./Comments";
 
 const SingleArticle = () => {
   const { article_id } = useParams();
@@ -13,20 +14,28 @@ const SingleArticle = () => {
   }, [article_id]);
 
   return (
-    <div className="single-article-card">
+    <main className="single-article-card">
       <h2 className="single-article-title">{singleArticle.title}</h2>
-      <div className="single-article-info">
-        <p>By: {singleArticle.author}</p>
-        <p>Topic: {singleArticle.topic}</p>
-        <p>Created at: {singleArticle.created_at}</p>
-      </div>
-      <img src={singleArticle.article_img_url} />
-      <div className="single-article-body">
-        <p>Votes: {singleArticle.votes}</p>
-        <p>Comments: {singleArticle.comment_count}</p>
-        <p>Body: {singleArticle.body}</p>
-      </div>
-    </div>
+      <section className="single-article-info">
+        <div className="single-article-headers">
+          <p>By: {singleArticle.author}</p>
+          <p>Topic: {singleArticle.topic}</p>
+          <p>Created at: {singleArticle.created_at}</p>
+        </div>
+        <img
+          className="single-article-img"
+          src={singleArticle.article_img_url}
+        />
+        <div className="single-article-body">
+          <div className="single-article-body-top">
+            <p>Votes: {singleArticle.votes}</p>
+            <p>Comments: {singleArticle.comment_count}</p>
+          </div>
+          <p>Body: {singleArticle.body}</p>
+          <Comments article_id={article_id} />
+        </div>
+      </section>
+    </main>
   );
 };
 

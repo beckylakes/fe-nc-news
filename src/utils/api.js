@@ -21,3 +21,9 @@ export const getArticleByID = (article_id) => {
     return data.article;
   });
 };
+
+export function getCommentsByArticleID(article_id) {
+	return api.get(`/articles/${article_id}/comments`).then(({ data }) => {
+		return data.comments[1];
+	});
+}
