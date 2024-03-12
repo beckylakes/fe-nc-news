@@ -1,0 +1,145 @@
+.App {
+  display: flex;
+  flex-direction: column;
+  background-color: aliceblue;
+  text-align: center;
+  min-height: 100vh;
+}
+
+@media only screen and (min-width: 600px) {
+  .App {
+    grid-template-columns: 25% 75%;
+    grid-template-rows: min-content auto;
+    grid-template-areas:
+      "header header"
+      "nav content";
+  }
+}
+
+/* USERS CSS Login.jsx and UserCard.jsx*/
+.users-page {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2vh;
+  padding: 2rem;
+}
+
+.user-card-section {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  column-gap: 3vw;
+  row-gap: 2vh;
+}
+
+.user-card {
+  background-color: rgb(255, 255, 255);
+  padding: 0.5rem;
+  width: fit-content;
+  min-width: 180px;
+  height: fit-content;
+  border-radius: 20px;
+}
+
+/*CHANGE COLOUR HERE*/
+.user-card:hover .user-img,
+.user-card:hover {
+  cursor: pointer;
+  background-color: rgb(252, 229, 254);
+  border-radius: 25px;
+  transition: all 0.4s ease 0s;
+}
+
+.user-card:hover {
+  transform: scale(1.05);
+}
+
+.user-img {
+  justify-self: center;
+  align-self: top;
+  width: 190px;
+  height: 190px;
+  padding: 0.5rem;
+}
+
+.user-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  row-gap: 0vh;
+  color: rgb(0, 0, 0);
+}
+
+/* ARTICLES CSS HERE */
+.article-list {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2vh;
+  padding-top: 1rem;
+}
+
+.article-card {
+  width: 85%;
+  height: 20vh;
+  border: 5px solid;
+  border-radius: 15px;
+  overflow: hidden;
+  text-align: left;
+  background-color: rgb(255, 255, 255);
+  border-color: rgb(0, 0, 0);
+
+  display: grid;
+  grid-template: 0.8fr 1.2fr / 1fr 1fr 1fr 1fr;
+  grid-template-areas: "header header header image" "info info info info";
+  justify-content: center;
+}
+
+/* 
+.article-list:hover .article-card {
+    filter: blur(1px); 
+    opacity: 0.5; 
+} */
+
+.article-list .article-card:hover {
+  transform: scale(1.05);
+  opacity: 1;
+  cursor: pointer;
+  transition: all 0.4s ease 0s;
+}
+
+.article-card-title {
+  display: box;
+  grid-area: header;
+  width: 200%;
+  height: 100%;
+  padding: 0.5vh 0vh 0.1vh 3vh;
+  color: rgb(21, 21, 22);
+}
+
+.article-card-img {
+  grid-area: image;
+  width: 100%;
+  height: 100%;
+  max-height: 13vh;
+  padding: 0px;
+  object-fit: cover;
+}
+
+.article-card-info {
+  grid-area: info;
+  display: flex;
+  flex-direction:row;
+  justify-content: center;
+  column-gap: 1rem;
+  width: 100%;
+  height: 200%;
+  background-color: rgb(144, 188, 249);
+  padding: 0.1rem;
+}

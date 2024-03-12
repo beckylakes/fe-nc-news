@@ -6,7 +6,6 @@ const api = axios.create({
 
 export const getUsers = () => {
   return api.get("users").then(({ data }) => {
-    console.log('in api', data.users)
     return data.users;
   });
 };
@@ -14,5 +13,11 @@ export const getUsers = () => {
 export const getAllArticles = () => {
   return api.get("articles").then(({ data }) => {
     return data.articles;
+  });
+};
+
+export const getArticleByID = (article_id) => {
+  return api.get(`articles/${article_id}`).then(({ data }) => {
+    return data.article;
   });
 };
