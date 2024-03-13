@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import Votes from "./Votes";
 
 const ArticleCard = ({ article }) => {
   const {
@@ -19,7 +20,7 @@ const ArticleCard = ({ article }) => {
       </Link>
       <img className="article-card-img" src={article_img_url} />
       <div className="article-card-info">
-        <p>Votes: {votes}</p>
+        <Votes article_id={article_id} votes={votes} />
         <p>Comments: {comment_count}</p>
         <p>Created at: {created_at}</p>
       </div>

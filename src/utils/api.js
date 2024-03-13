@@ -23,7 +23,18 @@ export const getArticleByID = (article_id) => {
 };
 
 export function getCommentsByArticleID(article_id) {
-	return api.get(`/articles/${article_id}/comments`).then(({ data }) => {
-		return data.comments[1];
-	});
+  return api.get(`/articles/${article_id}/comments`).then(({ data }) => {
+    return data.comments[1];
+  });
+}
+
+export function patchArticleVotes(article_id, votedStatus) {
+  return api
+    .patch(
+      `/articles/${article_id}`,
+      votedStatus ? { inc_votes: -1 } : { inc_votes: 1 }
+    )
+    .then(({ data }) => {
+      return data.article;
+    });
 }

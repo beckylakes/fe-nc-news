@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { getArticleByID } from "../utils/api";
 import Comments from "./Comments";
+import Votes from "./Votes";
 
 const SingleArticle = () => {
   const { article_id } = useParams();
@@ -28,7 +29,7 @@ const SingleArticle = () => {
         />
         <div className="single-article-body">
           <div className="single-article-body-top">
-            <p>Votes: {singleArticle.votes}</p>
+          <p><Votes article_id={article_id} votes={singleArticle.votes} /></p>
             <p>Comments: {singleArticle.comment_count}</p>
           </div>
           <p>Body: {singleArticle.body}</p>
