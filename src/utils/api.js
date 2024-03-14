@@ -10,8 +10,8 @@ export const getUsers = () => {
   });
 };
 
-export const getAllArticles = () => {
-  return api.get("articles").then(({ data }) => {
+export const getAllArticles = (topic) => {
+  return api.get("articles", { params: { topic } }).then(({ data }) => {
     return data.articles;
   });
 };
@@ -48,3 +48,9 @@ export function postComment(article_id, username, body) {
 export const deleteComment = (comment_id) => {
   return api.delete(`/comments/${comment_id}`);
 };
+
+export function getTopics() {
+	return api.get("/topics").then(({ data }) => {
+		return data.topics;
+	});
+}

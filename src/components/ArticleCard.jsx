@@ -37,14 +37,12 @@ const ArticleCard = ({ article }) => {
       </Link>
       <img className="article-card-img" src={article_img_url} />
       <div className="article-card-info">
-        <p>
           <Votes
             article_id={article_id}
             votes={votes}
             onVoteUpdate={handleVoteUpdate}
           />
           {singleArticle.votes}
-        </p>
         <p>Comments: {comment_count}</p>
         <p>Created at: {created_at}</p>
       </div>
