@@ -14,6 +14,13 @@ const SingleArticle = () => {
     });
   }, [article_id]);
 
+  const handleVoteUpdate = (newVoteCount) => {
+    setSingleArticle((currArticle) => ({
+      ...currArticle,
+      votes: newVoteCount,
+    }));
+  };
+
   return (
     <main className="single-article-card">
       <h2 className="single-article-title">{singleArticle.title}</h2>
@@ -29,7 +36,12 @@ const SingleArticle = () => {
         />
         <div className="single-article-body">
           <div className="single-article-body-top">
-          <p><Votes article_id={article_id} votes={singleArticle.votes} /></p>
+            <Votes
+              article_id={article_id}
+              votes={singleArticle.votes}
+              onVoteUpdate={handleVoteUpdate}
+            />
+            <p>Votes: {singleArticle.votes}</p>
             <p>Comments: {singleArticle.comment_count}</p>
           </div>
           <p>Body: {singleArticle.body}</p>

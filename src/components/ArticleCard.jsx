@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom";
 import Votes from "./Votes";
+import { useState, useEffect } from "react";
+import { getArticleByID } from "../utils/api";
 
 const ArticleCard = ({ article }) => {
   const {
@@ -13,6 +15,21 @@ const ArticleCard = ({ article }) => {
     votes,
   } = article;
 
+  const [singleArticle, setSingleArticle] = useState([]);
+
+  useEffect(() => {
+    getArticleByID(article_id).then((article) => {
+      setSingleArticle(article[0]);
+    });
+  }, [singleArticle.votes]);
+  
+  const handleVoteUpdate = (newVoteCount) => {
+    setSingleArticle((currArticle) => ({
+      ...currArticle,
+      votes: newVoteCount,
+    }));
+  };
+  
   return (
     <li className="article-card">
       <Link to={`/articles/${article_id}`}>
@@ -20,7 +37,14 @@ const ArticleCard = ({ article }) => {
       </Link>
       <img className="article-card-img" src={article_img_url} />
       <div className="article-card-info">
-        <Votes article_id={article_id} votes={votes} />
+        <p>
+          <Votes
+            article_id={article_id}
+            votes={votes}
+            onVoteUpdate={handleVoteUpdate}
+          />
+          {singleArticle.votes}
+        </p>
         <p>Comments: {comment_count}</p>
         <p>Created at: {created_at}</p>
       </div>

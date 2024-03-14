@@ -2,21 +2,20 @@ import { useState } from "react";
 import { patchArticleVotes } from "../utils/api";
 
 const useVote = (article_id) => {
-  const [votedStatus, setVotedStatus] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleVote = () => {
+  const handleVote = (isUpvote) => {
     setIsSubmitting(true);
-    setVotedStatus((currStatus) => {
-      return !currStatus;
-    });
-    patchArticleVotes(article_id, votedStatus)
+    patchArticleVotes(article_id, isUpvote)
       .then(() => {
         setIsSubmitting(false);
       })
+      .catch((err) => {
+        setIsSubmitting(false);
+      });
   };
 
-  return { votedStatus, handleVote, isSubmitting };
+  return { handleVote, isSubmitting };
 };
 
 export default useVote;
