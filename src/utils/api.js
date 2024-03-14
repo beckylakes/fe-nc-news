@@ -31,19 +31,20 @@ export function getCommentsByArticleID(article_id) {
 export function patchArticleVotes(article_id, isUpvote) {
   const voteChange = isUpvote ? 1 : -1;
   return api
-    .patch(
-      `/articles/${article_id}`,
-      { inc_votes: voteChange }
-    )
+    .patch(`/articles/${article_id}`, { inc_votes: voteChange })
     .then(({ data }) => {
       return data.article;
     });
 }
 
 export function postComment(article_id, username, body) {
-	return api
-		.post(`/articles/${article_id}/comments`, { username, body })
-		.then(({ data }) => {
-			return data.comment[1];
-		});
+  return api
+    .post(`/articles/${article_id}/comments`, { username, body })
+    .then(({ data }) => {
+      return data.comment[1];
+    });
 }
+
+export const deleteComment = (comment_id) => {
+  return api.delete(`/comments/${comment_id}`);
+};

@@ -18,7 +18,7 @@ const Comments = ({ article_id }) => {
       <PostComment article_id={article_id} setComments={setComments} />
       <ul className="comments-list">
         {comments.map((comment, index) => {
-          return <CommentCard comment={comment} key={comment.comment_id} />;
+          return <CommentCard comment={comment} setComments={setComments} key={comment.comment_id} />;
         })}
       </ul>
     </div>
