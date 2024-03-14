@@ -1,21 +1,30 @@
 import useVote from "./useVote";
 
-const Votes = ({ article_id, votes }) => {
-  const { votedStatus, handleVote, isSubmitting } = useVote(article_id);
+const Votes = ({ article_id, votes, onVoteUpdate }) => {
+  const { handleVote, isSubmitting } = useVote(article_id);
 
+  const handleVoteClick = (isUpvote) => {
+      handleVote(isUpvote)
+      onVoteUpdate(votes + (isUpvote ? 1 : -1));
+    
+  };
+  
   return (
-    <button
-      onClick={handleVote}
-      className="likeButton"
-      disabled={isSubmitting}
-    >
-      {votedStatus ? (
-        <span className="likedEmoji">{votes + 1} 👎 </span>
-      ) : (
-        <span className="notLikedEmoji">{votes} 👍 </span>
-      )}
-       {isSubmitting && <span className="submit-vote-msg">Submitted</span>}
-    </button>
+    <div>
+      <button
+        onClick={() => handleVoteClick(true)} 
+        className="likeButton"
+      >
+        Upvote 👍
+      </button>
+      <button
+        onClick={() => handleVoteClick(false)}
+        className="unlikeButton"
+      >
+        Downvote👎
+      </button>
+      {isSubmitting && <p>Voting...</p>}
+    </div>
   );
 };
 

@@ -36,6 +36,26 @@
   border: 0px;
 }
 
+.unlikeButton {
+  color: black;
+  font-size: medium;
+  background-color: transparent;
+  width: fit-content;
+  height: fit-content;
+  max-width: 4rem;
+  border: 0px;
+  padding: 0.2rem;
+}
+
+.unlikeButton:hover{
+  border-radius: 9px;
+  background-color:#31afd5;
+  transition: 0.7s;
+  transform: scale(1.12);
+  cursor: pointer;
+  border: 0px;
+}
+
 .submit-vote-msg{
   font-size: small;
 }
