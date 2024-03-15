@@ -60,6 +60,11 @@
   font-size: small;
 }
 
+.error-img{
+  width: 400px;
+  align-self: center;
+}
+
 /* USERS CSS Login.jsx and UserCard.jsx*/
 .users-page {
   display: flex;

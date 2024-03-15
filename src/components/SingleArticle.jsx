@@ -3,15 +3,22 @@ import { useParams } from "react-router-dom";
 import { getArticleByID } from "../utils/api";
 import Comments from "./Comments";
 import Votes from "./Votes";
+import ErrorPage from "./ErrorPage";
 
 const SingleArticle = () => {
   const { article_id } = useParams();
   const [singleArticle, setSingleArticle] = useState([]);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
-    getArticleByID(article_id).then((article) => {
-      setSingleArticle(article[0]);
-    });
+    getArticleByID(article_id)
+      .then((article) => {
+        setSingleArticle(article[0]);
+        setError(false);
+      })
+      .catch((err) => {
+        setError(err);
+      });
   }, [article_id]);
 
   const handleVoteUpdate = (newVoteCount) => {
@@ -21,7 +28,9 @@ const SingleArticle = () => {
     }));
   };
 
-  return (
+  return error ? (
+    <ErrorPage error={error} />
+  ) : (
     <main className="single-article-card">
       <h2 className="single-article-title">{singleArticle.title}</h2>
       <section className="single-article-info">

@@ -6,6 +6,7 @@ import Login from "./components/Login";
 import Articles from "./components/Articles";
 import "./App.css";
 import SingleArticle from "./components/SingleArticle";
+import ErrorPage from "./components/ErrorPage";
 
 const App = () => {
   const [userName, setUserName] = useState();
@@ -26,7 +27,8 @@ const App = () => {
         ) : (
           <Routes>
             <Route path="/articles" element={<Articles />} />
-            <Route path="/articles/:article_id" element={<SingleArticle />}/>
+            <Route path="/articles/:article_id" element={<SingleArticle />} />
+            <Route path="/*" element={<ErrorPage />} />
           </Routes>
         )}
       </div>
